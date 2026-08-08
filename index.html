@@ -110,12 +110,34 @@
   <script>
     // === ТВОИ ПЕСНИ (замени на свои) ===
     const musicLibrary = [
-      { id: 1, title: "Без тебя",      artist: "Кино",       cover: "https://picsum.photos/id/1015/400/400", audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
-      { id: 2, title: "Believer",      artist: "Imagine Dragons", cover: "https://picsum.photos/id/201/400/400", audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" },
-      { id: 3, title: "Levitating",    artist: "Dua Lipa",   cover: "https://picsum.photos/id/29/400/400", audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" },
-      { id: 4, title: "Blinding Lights", artist: "The Weeknd", cover: "https://picsum.photos/id/160/400/400", audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" },
-      { id: 5, title: "Sunflower",     artist: "Post Malone", cover: "https://picsum.photos/id/201/400/400", audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3" },
-      { id: 6, title: "Heat Waves",    artist: "Glass Animals", cover: "https://picsum.photos/id/1015/400/400", audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3" }
+      {
+        id: 1,
+        title: "worry",
+        artist: "LONOWN, riserayss",
+        cover: "https://picsum.photos/id/1015/400/400",
+        audio: "https://www.youtube.com/watch?v=lCKU-tI-upI"
+      },
+      {
+        id: 2,
+        title: "LEGACY",
+        artist: "PIXY",
+        cover: "https://picsum.photos/id/201/400/400",
+        audio: "https://www.youtube.com/watch?v=Ps_6IcvAEm8"
+      },
+      {
+        id: 3,
+        title: "type london",
+        artist: "ONDA ANDAR",
+        cover: "https://picsum.photos/id/29/400/400",
+        audio: "https://www.youtube.com/watch?v=_2tkmczXPpU"
+      },
+      {
+        id: 4,
+        title: "onda andar",
+        artist: "ONDA ANDAR",
+        cover: "https://picsum.photos/id/160/400/400",
+        audio: "https://www.youtube.com/watch?v=SUCefsDmjk0"
+      }
     ];
 
     let currentAudio = null;
@@ -167,7 +189,6 @@
       const playBtn = document.getElementById(`play-btn-${id}`);
       
       if (currentAudio && currentPlayingId === id) {
-        // Пауза
         currentAudio.pause();
         playBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>`;
         playBtn.classList.remove('playing');
@@ -176,13 +197,11 @@
         return;
       }
 
-      // Начинаем играть
       if (currentAudio) currentAudio.pause();
       
       currentAudio = new Audio(track.audio);
       currentAudio.play();
       
-      // Меняем иконку
       playBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>`;
       playBtn.classList.add('playing');
       
@@ -246,7 +265,7 @@
       document.getElementById('results-section').classList.add('hidden');
     }
 
-    // Сохранение текущего трека при перезагрузке страницы
+    // Авто-продолжение после перезагрузки
     window.onload = () => {
       const savedId = localStorage.getItem('lastPlayingId');
       if (savedId) {
